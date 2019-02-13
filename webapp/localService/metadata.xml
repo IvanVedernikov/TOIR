@@ -92,14 +92,6 @@
 								<PropertyPath>Month</PropertyPath>
 							</Collection>
 						</PropertyValue>
-						<PropertyValue Property="DimensionAttributes">
-							<Collection>
-								<Record Type="com.sap.vocabularies.UI.v1.ChartDimensionAttributeType">
-									<PropertyValue Property="Dimension" PropertyPath="TypeBreakdownTxt"/>
-									<PropertyValue Property="Role" EnumMember="com.sap.vocabularies.UI.v1.ChartDimensionRoleType/Series"/>
-								</Record>
-							</Collection>
-						</PropertyValue>
 						<PropertyValue Property="Measures">
 							<Collection>
 								<PropertyPath>BreakdownPlan</PropertyPath>							
