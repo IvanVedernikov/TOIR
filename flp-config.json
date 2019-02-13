@@ -1,0 +1,35 @@
+{
+    "application": {
+        "id": "",
+        "title": "ru.rosneft.breakdown.ru.rosneft.breakdown",
+        "description": "Простои оборудования план/факт",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#rurosneftbreakdown-Display",
+        "navigationComponentName": "ru.rosneft.breakdown",
+        "intentSemanticObject": "ru.rosneft.breakdown",
+        "intentAction": "Display",
+        "html5ApplicationName": "rurosneftbreakdown",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "37f32688-35ad-4b09-b85b-b887557dc988"
+        ],
+        "contentPackages": [
+            "dbcce193-84aa-4920-a561-fda473c161c5"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "StaticTile",
+        "title": "Простои оборудования план/факт",
+        "subtitle": "",
+        "searchKeywords": "Простои оборудования план/факт,",
+        "displayIconUrl": "sap-icon://approvals",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "",
+        "refreshInterval": ""
+    }
+}
