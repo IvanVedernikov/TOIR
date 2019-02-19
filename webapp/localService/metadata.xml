@@ -5,21 +5,22 @@
 		<Schema Namespace="ZPM_DEVELOPER_SCENARIO_SRV" sap:schema-version="0" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
 			<EntityType Name="Breakdown" sap:service-schema-version="1" sap:service-version="1" sap:semantics="aggregate" sap:content-version="1">
 				<Key>
-					<PropertyRef Name="TPLNR"/>
 					<PropertyRef Name="Year"/>
 					<PropertyRef Name="Month"/>
+					<PropertyRef Name="Bukrs"/>
 					<PropertyRef Name="Beber"/>
+					<PropertyRef Name="TPLNR"/>
 				</Key>
-				<Property Name="TPLNR" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Номер установки" sap:sortable="true"
-					sap:filterable="true"/>
-				<Property Name="PLTXT" Type="Edm.String" Nullable="false" MaxLength="40" sap:required-in-filter="false" sap:aggregation-role="dimension"
-					sap:label="Установка" sap:sortable="true" sap:filterable="true" sap:creatable="false"/>		
 				<Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:required-in-filter="false" sap:label="Завод(код)"
 					sap:sortable="false" sap:filterable="false" sap:creatable="false"/>
 				<Property Name="Butxt" Type="Edm.String" Nullable="false" MaxLength="40" sap:required-in-filter="false" sap:aggregation-role="dimension"
 					sap:label="Завод" sap:sortable="true" sap:filterable="true" sap:creatable="false"/>
 				<Property Name="Beber" Type="Edm.String" Nullable="false" MaxLength="40" sap:required-in-filter="false" sap:aggregation-role="dimension"
 					sap:label="Цех" sap:sortable="true" sap:filterable="true" sap:creatable="false"/>	
+				<Property Name="TPLNR" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Номер установки" sap:sortable="true"
+					sap:filterable="true"/>
+				<Property Name="PLTXT" Type="Edm.String" Nullable="false" MaxLength="40" sap:required-in-filter="false" sap:aggregation-role="dimension"
+					sap:label="Установка" sap:sortable="true" sap:filterable="true" sap:creatable="false"/>		
 				<Property Name="Year" Type="Edm.String" Nullable="false" MaxLength="4" sap:aggregation-role="dimension" sap:label="Год" sap:sortable="true"
 					sap:filterable="true"/>
 				<Property Name="Month" Type="Edm.String" Nullable="false" MaxLength="20" sap:aggregation-role="dimension" sap:label="Месяц"
@@ -57,7 +58,7 @@
 				</Key>
 				<Property Name="BUKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:visible="false" sap:label="Завод"/>
 				<Property Name="TPLNR" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:visible="false" sap:label="Код"/>
-				<Property Name="PLTXT" Type="Edm.String" MaxLength="25" sap:label="Цех"/>
+				<Property Name="PLTXT" Type="Edm.String" MaxLength="25" sap:label="Установка"/>
 			</EntityType>
 			<EntityContainer Name="ZPM_DEVELOPER_SCENARIO_SRV" m:IsDefaultEntityContainer="true">
 				<EntitySet Name="BreakdownSet" EntityType="ZPM_DEVELOPER_SCENARIO_SRV.Breakdown" sap:creatable="false" sap:updatable="false"
@@ -138,6 +139,30 @@
 								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
 									<PropertyValue Property="LocalDataProperty" PropertyPath="Beber"/>
 									<PropertyValue Property="ValueListProperty" String="BETXT"/>
+								</Record>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="BUKRS"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZPM_DEVELOPER_SCENARIO_SRV.Breakdown/PLTXT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record>
+						<PropertyValue Property="Label" String="Цех"/>
+						<PropertyValue Property="CollectionPath" String="VL_IFLOT"/>
+						<PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="TPLNR"/>
+									<PropertyValue Property="ValueListProperty" String="TPLNR"/>
+								</Record>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="PLTXT"/>
+									<PropertyValue Property="ValueListProperty" String="PLTXT"/>
 								</Record>
 								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
 									<PropertyValue Property="ValueListProperty" String="BUKRS"/>

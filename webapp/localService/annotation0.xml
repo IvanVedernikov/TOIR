@@ -27,6 +27,6 @@
 		<edmx:Include Alias="Validation" Namespace="Org.OData.Validation.V1"/>
 	</edmx:Reference>
 	<edmx:DataServices>
-		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm"></Schema>
 	</edmx:DataServices>
 </edmx:Edmx>

@@ -2,13 +2,15 @@
 	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:sl="sap.ui.comp.navpopover"
 	xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns="sap.m"
 	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" controllerName="ru.rosneft.breakdown.controller.SmartChart">
-	<VBox fitContainer="true" height="500px">
+	<VBox fitContainer="false">
 		<smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="BreakdownSet" persistencyKey="SmartFilterPKey"
 			considerSelectionVariants="true" liveMode="true">
 			<smartFilterBar:controlConfiguration>
 				<smartFilterBar:ControlConfiguration key="Butxt" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"
 					hasValueHelpDialog="true"></smartFilterBar:ControlConfiguration>
 				<smartFilterBar:ControlConfiguration key="Beber" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"
+					hasValueHelpDialog="true"></smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="PLTXT" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"
 					hasValueHelpDialog="true"></smartFilterBar:ControlConfiguration>
 			</smartFilterBar:controlConfiguration>
 		</smartFilterBar:SmartFilterBar>
