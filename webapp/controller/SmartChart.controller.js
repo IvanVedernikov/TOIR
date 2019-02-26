@@ -48,11 +48,7 @@ sap.ui.define([
 			var oParameters = oEvent.getParameters();
 			var oSemanticAttributes = oParameters.semanticAttributes;
 
-			oParameters.show("Supplier", new sap.ui.comp.navpopover.LinkData({
-				text: "Homepage",
-				href: "http://www.sap.com",
-				target: "_blank"
-			}), [
+			oParameters.show("Supplier", [], [
 				new sap.ui.comp.navpopover.LinkData({
 					text: "Go to shopping cart"
 				})
@@ -60,7 +56,7 @@ sap.ui.define([
 				maxContainerCols: 1,
 				content: [
 					new sap.ui.core.Title({
-						text: "Product description"
+						text: "Установка"
 					}), new Image({
 						src: "test-resources/sap/ui/documentation/sdk/images/HT-1052.jpg", // oSemanticAttributes.ProductPicUrl,
 						densityAware: false,

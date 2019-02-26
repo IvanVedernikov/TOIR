@@ -25,13 +25,13 @@
 					sap:filterable="true"/>
 				<Property Name="Month" Type="Edm.String" Nullable="false" MaxLength="20" sap:aggregation-role="dimension" sap:label="Месяц"
 					sap:sortable="true" sap:filterable="true"/>
-				<Property Name="BreakdownPlan" Type="Edm.Decimal" Nullable="false" MaxLength="10" sap:aggregation-role="measure" sap:label="Плановый, час"
+				<Property Name="BreakdownPlan" Type="Edm.Decimal" Nullable="false" Precision="2" Scale="4" sap:aggregation-role="measure" sap:label="Плановый, час"
 					sap:sortable="true" sap:filterable="true"/>	
-				<Property Name="BreakdownFact" Type="Edm.Decimal" Nullable="false" MaxLength="10" sap:aggregation-role="measure" sap:label="Фактический, час"
+				<Property Name="BreakdownFact" Type="Edm.Decimal" Nullable="false" Precision="2" Scale="4" sap:aggregation-role="measure" sap:label="Фактический, час"
 					sap:sortable="true" sap:filterable="true"/>
-				<Property Name="TypeBreakdown" Type="Edm.String" Nullable="false" Precision="2" Scale="4" sap:label="Вид простоя (код)" sap:sortable="true"
+				<Property Name="TypeBreakdown" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Вид простоя (код)" sap:sortable="true"
 					sap:filterable="true"/>
-				<Property Name="TypeBreakdownTxt" Type="Edm.String" Nullable="false" Precision="10" Scale="4" sap:aggregation-role="dimension"
+				<Property Name="TypeBreakdownTxt" Type="Edm.String" Nullable="false" MaxLength="20" sap:aggregation-role="dimension"
 					sap:label="Вид простоя" sap:sortable="true" sap:filterable="true"/>
 			</EntityType>
 			<EntityType Name="VL_BUKRS" sap:content-version="1">
@@ -151,7 +151,7 @@
 			<Annotations Target="ZPM_DEVELOPER_SCENARIO_SRV.Breakdown/PLTXT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
 				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
 					<Record>
-						<PropertyValue Property="Label" String="Цех"/>
+						<PropertyValue Property="Label" String="Установка"/>
 						<PropertyValue Property="CollectionPath" String="VL_IFLOT"/>
 						<PropertyValue Property="SearchSupported" Bool="true"/>
 						<PropertyValue Property="Parameters">
