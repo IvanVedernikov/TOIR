@@ -5,70 +5,112 @@
 		<Schema Namespace="ZPM_DEVELOPER_SCENARIO_SRV" sap:schema-version="0" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
 			<EntityType Name="Breakdown" sap:service-schema-version="1" sap:service-version="1" sap:semantics="aggregate" sap:content-version="1">
 				<Key>
-					<PropertyRef Name="Year"/>
-					<PropertyRef Name="Month"/>
+					<PropertyRef Name="Nun"/>
 					<PropertyRef Name="Bukrs"/>
-					<PropertyRef Name="Beber"/>
-					<PropertyRef Name="TPLNR"/>
+					<PropertyRef Name="Tplnr"/>
 				</Key>
+				<Property Name="Nun" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Номер затраты" sap:sortable="true" sap:filterable="true"/>
 				<Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:required-in-filter="false" sap:label="Завод(код)"
 					sap:sortable="false" sap:filterable="false" sap:creatable="false"/>
-				<Property Name="Butxt" Type="Edm.String" Nullable="false" MaxLength="40" sap:required-in-filter="false" sap:aggregation-role="dimension"
+				<Property Name="Butxt" Type="Edm.String" Nullable="false" MaxLength="40" sap:required-in-filter="false"
 					sap:label="Завод" sap:sortable="true" sap:filterable="true" sap:creatable="false"/>
-				<Property Name="Beber" Type="Edm.String" Nullable="false" MaxLength="40" sap:required-in-filter="false" sap:aggregation-role="dimension"
-					sap:label="Цех" sap:sortable="true" sap:filterable="true" sap:creatable="false"/>	
-				<Property Name="TPLNR" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Номер установки" sap:sortable="true"
+				<Property Name="Tplnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Номер установки" sap:sortable="true"
 					sap:filterable="true"/>
-				<Property Name="PLTXT" Type="Edm.String" Nullable="false" MaxLength="40" sap:required-in-filter="false" sap:aggregation-role="dimension"
-					sap:label="Установка" sap:sortable="true" sap:filterable="true" sap:creatable="false"/>		
+				<Property Name="Pltxt" Type="Edm.String" Nullable="false" MaxLength="40" sap:required-in-filter="false" sap:aggregation-role="dimension"
+					sap:label="Установка" sap:sortable="true" sap:filterable="true" sap:creatable="false"/>				
 				<Property Name="Year" Type="Edm.String" Nullable="false" MaxLength="4" sap:aggregation-role="dimension" sap:label="Год" sap:sortable="true"
 					sap:filterable="true"/>
+				<Property Name="NumMonth" Type="Edm.String" Nullable="false" MaxLength="2" sap:required-in-filter="false" sap:label="Номер месяца"
+					sap:sortable="true" sap:filterable="false" sap:creatable="false"/>
 				<Property Name="Month" Type="Edm.String" Nullable="false" MaxLength="20" sap:aggregation-role="dimension" sap:label="Месяц"
-					sap:sortable="true" sap:filterable="true"/>
-				<Property Name="BreakdownPlan" Type="Edm.Decimal" Nullable="false" Precision="2" Scale="4" sap:aggregation-role="measure" sap:label="Плановый, час"
 					sap:sortable="true" sap:filterable="true"/>	
-				<Property Name="BreakdownFact" Type="Edm.Decimal" Nullable="false" Precision="2" Scale="4" sap:aggregation-role="measure" sap:label="Фактический, час"
+				<Property Name="TypeValue" Type="Edm.String" Nullable="false" MaxLength="20" sap:aggregation-role="dimension"
+					sap:label="Значение" sap:sortable="true" sap:filterable="true"/>
+				<Property Name="isPlaned" Type="Edm.String" Nullable="false" MaxLength="20" sap:aggregation-role="dimension"
+					sap:label="Планирование" sap:sortable="true" sap:filterable="true"/>	
+				<Property Name="UnplannedBreakdown" Type="Edm.Decimal" Nullable="false" Precision="2" Scale="4" sap:aggregation-role="measure" sap:label="Внеплановый простой"
+					sap:sortable="true" sap:filterable="true"/>	
+				<Property Name="CapitalRepair" Type="Edm.Decimal" Nullable="false" Precision="2" Scale="4" sap:aggregation-role="measure" sap:label="Капитальный ремонт"
 					sap:sortable="true" sap:filterable="true"/>
-				<Property Name="TypeBreakdown" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Вид простоя (код)" sap:sortable="true"
-					sap:filterable="true"/>
-				<Property Name="TypeBreakdownTxt" Type="Edm.String" Nullable="false" MaxLength="20" sap:aggregation-role="dimension"
-					sap:label="Вид простоя" sap:sortable="true" sap:filterable="true"/>
+				<Property Name="CommercialBreakdown" Type="Edm.Decimal" Nullable="false" Precision="2" Scale="4" sap:aggregation-role="measure" sap:label="Коммерческий простой"
+					sap:sortable="true" sap:filterable="true"/>	
+				<Property Name="Reconstruction" Type="Edm.Decimal" Nullable="false" Precision="2" Scale="4" sap:aggregation-role="measure" sap:label="Строительство, реконструкция"
+					sap:sortable="true" sap:filterable="true"/>		
+				<Property Name="PermanentRepair" Type="Edm.Decimal" Nullable="false" Precision="2" Scale="4" sap:aggregation-role="measure" sap:label="Текущий ремонт"
+					sap:sortable="true" sap:filterable="true"/>	
+				<Property Name="TechnologicalStop" Type="Edm.Decimal" Nullable="false" Precision="2" Scale="4" sap:aggregation-role="measure" sap:label="Технологич.остановка"
+					sap:sortable="true" sap:filterable="true"/>		
+				<Property Name="OtherBreakdown" Type="Edm.Decimal" Nullable="false" Precision="2" Scale="4" sap:aggregation-role="measure" sap:label="Прочие простои"
+					sap:sortable="true" sap:filterable="true"/>	
+				<Property Name="Total" Type="Edm.Decimal" Nullable="false" Precision="2" Scale="4" sap:aggregation-role="measure" sap:label="Всего"
+					sap:sortable="true" sap:filterable="true"/>
+				<Property Name="UnplannedBreakdownPercent" Type="Edm.Decimal" Nullable="false" Precision="2" Scale="4" sap:aggregation-role="measure" sap:label="Внеплановый простой"
+					sap:sortable="true" sap:filterable="true"/>	
+				<Property Name="CapitalRepairPercent" Type="Edm.Decimal" Nullable="false" Precision="2" Scale="4" sap:aggregation-role="measure" sap:label="Капитальный ремонт"
+					sap:sortable="true" sap:filterable="true"/>
+				<Property Name="CommercialBreakdownPercent" Type="Edm.Decimal" Nullable="false" Precision="2" Scale="4" sap:aggregation-role="measure" sap:label="Коммерческий простой"
+					sap:sortable="true" sap:filterable="true"/>	
+				<Property Name="ReconstructionPercent" Type="Edm.Decimal" Nullable="false" Precision="2" Scale="4" sap:aggregation-role="measure" sap:label="Строительство, реконструкция"
+					sap:sortable="true" sap:filterable="true"/>		
+				<Property Name="PermanentRepairPercent" Type="Edm.Decimal" Nullable="false" Precision="2" Scale="4" sap:aggregation-role="measure" sap:label="Текущий ремонт"
+					sap:sortable="true" sap:filterable="true"/>	
+				<Property Name="TechnologicalStopPercent" Type="Edm.Decimal" Nullable="false" Precision="2" Scale="4" sap:aggregation-role="measure" sap:label="Технологич.остановка"
+					sap:sortable="true" sap:filterable="true"/>		
+				<Property Name="OtherBreakdownPercent" Type="Edm.Decimal" Nullable="false" Precision="2" Scale="4" sap:aggregation-role="measure" sap:label="Прочие простои"
+					sap:sortable="true" sap:filterable="true"/>		
 			</EntityType>
-			<EntityType Name="VL_BUKRS" sap:content-version="1">
+			<EntityType Name="VL_T001" sap:content-version="1">
 				<Key>
-					<PropertyRef Name="BUKRS"/>
+					<PropertyRef Name="Bukrs"/>
 				</Key>
-				<Property Name="BUKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:visible="false" sap:label="Код"/>
-				<Property Name="BUTXT" Type="Edm.String" MaxLength="25" sap:label="Завод"/>
-				<Property Name="BUDESC" Type="Edm.String" MaxLength="250" sap:label="Завод (название)"/>
+				<Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:visible="false" sap:label="Код"/>
+				<Property Name="Butxt" Type="Edm.String" MaxLength="40" sap:label="Наименование"/>
 			</EntityType>
 			<EntityType Name="VL_BEBER" sap:content-version="1">
 				<Key>
-					<PropertyRef Name="BUKRS"/>
-					<PropertyRef Name="BEBER"/>
+					<PropertyRef Name="Bukrs"/>
+					<PropertyRef Name="Beber"/>
 				</Key>
-				<Property Name="BUKRS" Type="Edm.String" MaxLength="4" sap:label="Завод"/>
-				<Property Name="BEBER" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:visible="false" sap:label="Код"/>
-				<Property Name="BETXT" Type="Edm.String" MaxLength="25" sap:label="Цех"/>
+				<Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:visible="false" sap:label="Завод"/>
+				<Property Name="Beber" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:visible="false" sap:label="Код"/>
+				<Property Name="Betxt" Type="Edm.String" MaxLength="40" sap:label="Наименование"/>
 			</EntityType>
 			<EntityType Name="VL_IFLOT" sap:content-version="1">
 				<Key>
-					<PropertyRef Name="BUKRS"/>
-					<PropertyRef Name="TPLNR"/>
+					<PropertyRef Name="Bukrs"/>
+					<PropertyRef Name="Tplnr"/>
 				</Key>
-				<Property Name="BUKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:visible="false" sap:label="Завод"/>
-				<Property Name="TPLNR" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:visible="false" sap:label="Код"/>
-				<Property Name="PLTXT" Type="Edm.String" MaxLength="25" sap:label="Установка"/>
+				<Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:visible="true" sap:label="Завод"/>
+				<Property Name="Tplnr" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:visible="true" sap:label="Код"/>
+				<Property Name="Pltxt" Type="Edm.String" MaxLength="25" sap:label="Наименование"/>
+			</EntityType>
+			<EntityType Name="VL_MONTH" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="ID"/>
+				</Key>
+				<Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:visible="false" sap:label="Ид" sap:sortable="true"/>
+				<Property Name="MONTH" Type="Edm.String" MaxLength="25" sap:label="Месяц" sap:sortable="false"/>
+			</EntityType>
+			<EntityType Name="VL_YEAR" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Id"/>
+				</Key>
+				<Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:visible="true" sap:label="Ид"/>
+				<Property Name="Year" Type="Edm.String" MaxLength="25" sap:label="Год" sap:sortable="false"/>
 			</EntityType>
 			<EntityContainer Name="ZPM_DEVELOPER_SCENARIO_SRV" m:IsDefaultEntityContainer="true">
 				<EntitySet Name="BreakdownSet" EntityType="ZPM_DEVELOPER_SCENARIO_SRV.Breakdown" sap:creatable="false" sap:updatable="false"
 					sap:deletable="false" sap:pageable="false" sap:content-version="1" />
-				<EntitySet Name="VL_BUKRS" EntityType="ZPM_DEVELOPER_SCENARIO_SRV.VL_BUKRS" sap:creatable="false" sap:updatable="false"
+				<EntitySet Name="VL_T001" EntityType="ZPM_DEVELOPER_SCENARIO_SRV.VL_T001" sap:creatable="false" sap:updatable="false"
 					sap:deletable="false" sap:content-version="1" sap:countable="false"/>
 				<EntitySet Name="VL_BEBER" EntityType="ZPM_DEVELOPER_SCENARIO_SRV.VL_BEBER" sap:creatable="false" sap:updatable="false"
 					sap:deletable="false" sap:content-version="1" sap:countable="false"/>
 				<EntitySet Name="VL_IFLOT" EntityType="ZPM_DEVELOPER_SCENARIO_SRV.VL_IFLOT" sap:creatable="false" sap:updatable="false"
 					sap:deletable="false" sap:content-version="1" sap:countable="false"/>
+				<EntitySet Name="VL_YEAR" EntityType="ZPM_DEVELOPER_SCENARIO_SRV.VL_YEAR" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1" sap:countable="false"/>	
+				<EntitySet Name="VL_MONTH" EntityType="ZPM_DEVELOPER_SCENARIO_SRV.VL_MONTH" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1" sap:countable="false"/>	
 			</EntityContainer>
 			<Annotations Target="ZPM_DEVELOPER_SCENARIO_SRV.Breakdown" xmlns="http://docs.oasis-open.org/odata/ns/edm">
 				<Annotation Term="com.sap.vocabularies.UI.v1.LineItem">
@@ -85,70 +127,77 @@
 				</Annotation>
 			</Annotations>
 			<Annotations Target="ZPM_DEVELOPER_SCENARIO_SRV.Breakdown" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-				<Annotation Term="com.sap.vocabularies.UI.v1.Chart">
+				<Annotation Term="com.sap.vocabularies.UI.v1.Chart" Qualifier="Count">
 					<Record>
-						<PropertyValue Property="ChartType" EnumMember="com.sap.vocabularies.UI.v1.ChartType/Column"/>
+						<PropertyValue Property="ChartType" EnumMember="com.sap.vocabularies.UI.v1.ChartType/CombinationStacked"/>
 						<PropertyValue Property="Dimensions">
 							<Collection>
+								<PropertyPath>Year</PropertyPath>
 								<PropertyPath>Month</PropertyPath>
+								<PropertyPath>Pltxt</PropertyPath>
 							</Collection>
 						</PropertyValue>
 						<PropertyValue Property="Measures">
 							<Collection>
-								<PropertyPath>BreakdownPlan</PropertyPath>							
-								<PropertyPath>BreakdownFact</PropertyPath>
+								<PropertyPath>Total</PropertyPath>
+								<PropertyPath>UnplannedBreakdown</PropertyPath>							
+								<PropertyPath>CapitalRepair</PropertyPath>
+								<PropertyPath>CommercialBreakdown</PropertyPath>
+								<PropertyPath>Reconstruction</PropertyPath>
+								<PropertyPath>PermanentRepair</PropertyPath>
+								<PropertyPath>TechnologicalStop</PropertyPath>
+								<PropertyPath>OtherBreakdown</PropertyPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="com.sap.vocabularies.UI.v1.Chart" Qualifier="Percent">
+					<Record>
+						<PropertyValue Property="ChartType" EnumMember="com.sap.vocabularies.UI.v1.ChartType/BarStacked100"/>
+						<PropertyValue Property="Dimensions">
+							<Collection>
+								<PropertyPath>Year</PropertyPath>
+								<PropertyPath>Month</PropertyPath>
+								<PropertyPath>Pltxt</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Measures">
+							<Collection>
+								<PropertyPath>UnplannedBreakdownPercent</PropertyPath>							
+								<PropertyPath>CapitalRepairPercent</PropertyPath>
+								<PropertyPath>CommercialBreakdownPercent</PropertyPath>
+								<PropertyPath>ReconstructionPercent</PropertyPath>
+								<PropertyPath>PermanentRepairPercent</PropertyPath>
+								<PropertyPath>TechnologicalStopPercent</PropertyPath>
+								<PropertyPath>OtherBreakdownPercent</PropertyPath>
 							</Collection>
 						</PropertyValue>
 					</Record>
 				</Annotation>
 			</Annotations>
-			<!--Средства поиска для фильтров-->
-			<Annotations Target="ZPM_DEVELOPER_SCENARIO_SRV.Breakdown/Butxt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+		<Annotations Target="ZPM_DEVELOPER_SCENARIO_SRV.Breakdown/Butxt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
 				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
 					<Record>
 						<PropertyValue Property="Label" String="Завод"/>
-						<PropertyValue Property="CollectionPath" String="VL_BUKRS"/>
+						<PropertyValue Property="CollectionPath" String="VL_T001"/>
 						<PropertyValue Property="SearchSupported" Bool="true"/>
 						<PropertyValue Property="Parameters">
 							<Collection>
 								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
 									<PropertyValue Property="LocalDataProperty" PropertyPath="Bukrs"/>
-									<PropertyValue Property="ValueListProperty" String="BUKRS"/>
+									<PropertyValue Property="ValueListProperty" String="Bukrs"/>
 								</Record>
 								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
 									<PropertyValue Property="LocalDataProperty" PropertyPath="Butxt"/>
-									<PropertyValue Property="ValueListProperty" String="BUTXT"/>
+									<PropertyValue Property="ValueListProperty" String="Butxt"/>
 								</Record>
 							</Collection>
 						</PropertyValue>
 					</Record>
 				</Annotation>
 			</Annotations>
-			<Annotations Target="ZPM_DEVELOPER_SCENARIO_SRV.Breakdown/Beber" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
-					<Record>
-						<PropertyValue Property="Label" String="Цех"/>
-						<PropertyValue Property="CollectionPath" String="VL_BEBER"/>
-						<PropertyValue Property="SearchSupported" Bool="true"/>
-						<PropertyValue Property="Parameters">
-							<Collection>
-								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
-									<PropertyValue Property="LocalDataProperty" PropertyPath="Beber"/>
-									<PropertyValue Property="ValueListProperty" String="BEBER"/>
-								</Record>
-								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
-									<PropertyValue Property="LocalDataProperty" PropertyPath="Beber"/>
-									<PropertyValue Property="ValueListProperty" String="BETXT"/>
-								</Record>
-								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
-									<PropertyValue Property="ValueListProperty" String="BUKRS"/>
-								</Record>
-							</Collection>
-						</PropertyValue>
-					</Record>
-				</Annotation>
-			</Annotations>
-			<Annotations Target="ZPM_DEVELOPER_SCENARIO_SRV.Breakdown/PLTXT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+			<!--Настройка фильтра по полю Установка-->			
+				<Annotations Target="ZPM_DEVELOPER_SCENARIO_SRV.Breakdown/Pltxt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
 				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
 					<Record>
 						<PropertyValue Property="Label" String="Установка"/>
@@ -157,15 +206,54 @@
 						<PropertyValue Property="Parameters">
 							<Collection>
 								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
-									<PropertyValue Property="LocalDataProperty" PropertyPath="TPLNR"/>
-									<PropertyValue Property="ValueListProperty" String="TPLNR"/>
+									<PropertyValue Property="LocalDataProperty" PropertyPath="Tplnr"/>
+									<PropertyValue Property="ValueListProperty" String="Tplnr"/>
 								</Record>
 								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
-									<PropertyValue Property="LocalDataProperty" PropertyPath="PLTXT"/>
-									<PropertyValue Property="ValueListProperty" String="PLTXT"/>
+									<PropertyValue Property="LocalDataProperty" PropertyPath="Pltxt"/>
+									<PropertyValue Property="ValueListProperty" String="Pltxt"/>
 								</Record>
 								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
-									<PropertyValue Property="ValueListProperty" String="BUKRS"/>
+									<PropertyValue Property="ValueListProperty" String="Bukrs"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<!--Настройка фильтра по полю Годам-->			
+			<Annotations Target="ZPM_DEVELOPER_SCENARIO_SRV.Breakdown/Year" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record>
+						<PropertyValue Property="Label" String="Год"/>
+						<PropertyValue Property="CollectionPath" String="VL_YEAR"/>
+						<PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="Year"/>
+									<PropertyValue Property="ValueListProperty" String="Year"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<!--Настройка фильтра по полю Месяц-->			
+			<Annotations Target="ZPM_DEVELOPER_SCENARIO_SRV.Breakdown/Month" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record>
+						<PropertyValue Property="Label" String="Месяц"/>
+						<PropertyValue Property="CollectionPath" String="VL_MONTH"/>
+						<PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="ID"/>
+								</Record>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="Month"/>
+									<PropertyValue Property="ValueListProperty" String="MONTH"/>
 								</Record>
 							</Collection>
 						</PropertyValue>

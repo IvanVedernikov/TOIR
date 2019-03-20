@@ -11,7 +11,7 @@
 		},
 		"dataSources": {
 			"mainService": {
-				"uri": "/destinations/service",
+				"uri": "/destinations/service1",
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0",

@@ -1,28 +1,52 @@
 <core:View xmlns:core="sap.ui.core" xmlns:smartchart="sap.ui.comp.smartchart" xmlns:smartTable="sap.ui.comp.smarttable"
-	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:sl="sap.ui.comp.navpopover"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:sl="sap.ui.comp.navpopover" xmlns:viz="sap.viz.ui5.controls"
 	xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns="sap.m"
 	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" controllerName="ru.rosneft.breakdown.controller.SmartChart">
-	<VBox fitContainer="false">
+	<VBox fitContainer="false" height="500rem">
 		<smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="BreakdownSet" persistencyKey="SmartFilterPKey"
 			considerSelectionVariants="true" liveMode="true">
 			<smartFilterBar:controlConfiguration>
 				<smartFilterBar:ControlConfiguration key="Butxt" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"
 					hasValueHelpDialog="true"></smartFilterBar:ControlConfiguration>
-				<smartFilterBar:ControlConfiguration key="Beber" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"
+				<smartFilterBar:ControlConfiguration key="Pltxt" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"
 					hasValueHelpDialog="true"></smartFilterBar:ControlConfiguration>
-				<smartFilterBar:ControlConfiguration key="PLTXT" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"
+				<smartFilterBar:ControlConfiguration key="Year" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"
+					hasValueHelpDialog="true"></smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="Month" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"
 					hasValueHelpDialog="true"></smartFilterBar:ControlConfiguration>
 			</smartFilterBar:controlConfiguration>
 		</smartFilterBar:SmartFilterBar>
-		<smartchart:SmartChart id="smartChartGeneral" enableAutoBinding="true" entitySet="BreakdownSet" useVariantManagement="false"
-			smartFilterId="smartFilterBar" beforeRebindChart="onVizSetings" persistencyKey="PKeyChartExample9" useChartPersonalisation="true" header=""
-			showFullScreenButton="true" selectionMode="Multi" showChartTooltip="true" showDrillBreadcrumbs="true" showDetailsButton="true"
-			showDrillButtons="true" showSemanticNavigationButton="true" data:dateFormatSettings="\{&quot;pattern&quot;:&quot;y MMMM d&quot;\}"
-			showDownloadButton="true">
-			<smartchart:semanticObjectController>
-				<sl:SemanticObjectController navigationTargetsObtained="onNavigationTargetsObtained" navigate="onNavigate"/>
-			</smartchart:semanticObjectController>
-		</smartchart:SmartChart>
+		<IconTabBar class="sapUiResponsiveContentPadding" expandable="false">
+			<items>
+				<IconTabFilter text="Количество часов простоя">
+					<content>
+						<smartchart:SmartChart id="smartChartGeneral" enableAutoBinding="true" entitySet="BreakdownSet" useVariantManagement="false"
+							smartFilterId="smartFilterBar" beforeRebindChart="onVizSetings" persistencyKey="PKeyChartExample9" useChartPersonalisation="true" header=""
+							showFullScreenButton="true" selectionMode="Single" showChartTooltip="true" showDrillBreadcrumbs="true" showDetailsButton="false"
+							showDrillButtons="true" showSemanticNavigationButton="false" data:dateFormatSettings="\{&quot;pattern&quot;:&quot;y MMMM d&quot;\}"
+							showDownloadButton="true" data:chartQualifier="Count">
+							<smartchart:semanticObjectController>
+								<sl:SemanticObjectController navigationTargetsObtained="onNavigationTargetsObtained" navigate="onNavigate"/>
+							</smartchart:semanticObjectController>
+						</smartchart:SmartChart>
+					</content>
+				</IconTabFilter>
+				<IconTabFilter text="Процентное соотношение">
+					<content>
+						<smartchart:SmartChart id="smartChartPercent" enableAutoBinding="true" entitySet="BreakdownSet" useVariantManagement="false"
+							smartFilterId="smartFilterBar" beforeRebindChart="onVizSetings" persistencyKey="PKeyChartExample9" useChartPersonalisation="true" header=""
+							showFullScreenButton="true" selectionMode="Single" showChartTooltip="true" showDrillBreadcrumbs="true" showDetailsButton="false"
+							showDrillButtons="true" showSemanticNavigationButton="false" data:dateFormatSettings="\{&quot;pattern&quot;:&quot;y MMMM d&quot;\}"
+							showDownloadButton="true" data:chartQualifier="Percent">
+							<smartchart:semanticObjectController>
+								<sl:SemanticObjectController navigationTargetsObtained="onNavigationTargetsObtained" navigate="onNavigate"/>
+							</smartchart:semanticObjectController>
+						</smartchart:SmartChart>
+					</content>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+		<!--<viz:Popover id="idPopOver"></viz:Popover>-->
 		<!--<smartTable:SmartTable id="smartTable" entitySet="BreakdownSet" smartFilterId="smartFilterBar" tableType="Table" useExportToExcel="true"-->
 		<!--	useVariantManagement="false" useTablePersonalisation="true" header="" showRowCount="true">-->
 		<!--	<smartTable:layoutData>-->

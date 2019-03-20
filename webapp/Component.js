@@ -20,12 +20,9 @@ sap.ui.define([
 		 * @override
 		 */
 		init: function () {
-			// MockServer.stop();
-			// MockServer.destroy();
 			MockServer.init();
-
 			var oModel = new sap.ui.model.odata.v2.ODataModel({
-				serviceUrl: "/destinations/service"
+				serviceUrl: "/destinations/service1"
 			});
 			this.setModel(oModel);
 
@@ -42,6 +39,7 @@ sap.ui.define([
 
 			// create the views based on the url/hash
 			this.getRouter().initialize();
+
 		},
 
 		/**
@@ -52,6 +50,7 @@ sap.ui.define([
 		 */
 		destroy: function () {
 			this._oErrorHandler.destroy();
+			MockServer.destroyMockServer();
 			// call the base component's destroy function
 			UIComponent.prototype.destroy.apply(this, arguments);
 		},
